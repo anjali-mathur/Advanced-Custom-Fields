@@ -1,3 +1,30 @@
+minicart code
+ <div class="upsale_box_out"></div>
+    ---------------------
+
+    customefile.js
+    function upsale_pd(){
+      
+        $.ajax({
+            url: '/pages/upsale',             
+            success: function(upsale) {
+             
+              var up = $(upsale).find('.upslale_box').html();
+              $('.upsale_box_out').html('');
+              if(typeof up !== 'undefined'){
+               $('.upsale_box_out').html('<div class="upslale_box">'+up+'</div>');
+              }
+            }
+          });
+      
+      
+      // discount
+      // discount_build();
+      
+    }
+-----------------------------
+page.template
+
 {% assign pd_upsale = '' %}
 
 {% for item in cart.items %}
