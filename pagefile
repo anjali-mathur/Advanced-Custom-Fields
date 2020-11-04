@@ -1,0 +1,62 @@
+{% assign pd_upsale = '' %}
+
+{% for item in cart.items %}
+  {% if pd_upsale == '' and item.product.metafields.c_f.product_1 != blank %}
+	{% assign pd_upsale = item.product %}
+  {% endif %}
+{% endfor %}
+
+{% if pd_upsale != '' %}
+  <div class="upslale_box">
+    
+     
+     {% assign pd_upsale_list = pd_upsale.metafields.c_f.product_1 | handle %}    
+     {% assign pd_upsale_list = all_products[pd_upsale_list] %}
+     
+     {% if pd_upsale_list != blank %}
+      <div class="upsle_items">
+         <div class="upsle_img">
+           <img src="{{ pd_upsale_list.images[0] | img_url: '90x90'}}" alt="#"/>
+          </div>
+          <div class="name_price">
+            <div class="upsle_name">{{ pd_upsale_list.title}}</div>
+            <div class="upsle_price">{{ pd_upsale_list.price | money}}</div>
+          </div>
+         <div class="add_upsale" data-id="{{pd_upsale_list.selected_or_first_available_variant.id}}">ADD</div>
+      </div>
+     {% endif %}
+    
+    {% assign pd_upsale_list = pd_upsale.metafields.c_f.product_2 | handle %}    
+     {% assign pd_upsale_list = all_products[pd_upsale_list] %}
+     
+     {% if pd_upsale_list != blank %}
+      <div class="upsle_items">
+         <div class="upsle_img">
+           <img src="{{ pd_upsale_list.images[0] | img_url: '90x90'}}" alt="#"/>
+          </div>
+          <div class="name_price">
+            <div class="upsle_name">{{ pd_upsale_list.title}}</div>
+            <div class="upsle_price">{{ pd_upsale_list.price | money}}</div>
+          </div>
+         <div class="add_upsale" data-id="{{pd_upsale_list.selected_or_first_available_variant.id}}">ADD</div>
+      </div>
+     {% endif %}
+    
+    {% assign pd_upsale_list = pd_upsale.metafields.c_f.product_3 | handle %}    
+     {% assign pd_upsale_list = all_products[pd_upsale_list] %}
+     
+     {% if pd_upsale_list != blank %}
+      <div class="upsle_items">
+         <div class="upsle_img">
+           <img src="{{ pd_upsale_list.images[0] | img_url: '90x90'}}" alt="#"/>
+          </div>
+          <div class="name_price">
+            <div class="upsle_name">{{ pd_upsale_list.title}}</div>
+            <div class="upsle_price">{{ pd_upsale_list.price | money}}</div>
+          </div>
+         <div class="add_upsale" data-id="{{pd_upsale_list.selected_or_first_available_variant.id}}">ADD</div>
+      </div>
+     {% endif %}
+    
+  </div>
+{% endif %}
